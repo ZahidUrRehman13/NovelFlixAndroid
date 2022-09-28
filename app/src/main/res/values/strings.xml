@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">NovelFlix</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="signUp_text">SignUp</string>
+    <string name="signIn_text">Sign In</string>
+    <string name="register_text">Sign Up</string>
+    <string name="Username">UserName</string>
+    <string name="Email">Email</string>
+    <string name="PasswordHintTxt">******</string>
+    <string name="UsernameHintTxt">Adria Warren</string>
+    <string name="EmailHintTxt">novelflex@gmail.com</string>
+    <string name="Password">Password</string>
+    <string name="login_btn">Login</string>
+    <string name="signUp_btn">SignUp</string>
+    <string name="geners_text">Geners</string>
+    <string name="Your_manga_text">Your Manga</string>
+    <string name="forgetPassword_txt">Forget Password</string>
+    <string name="dont_have_anccount_text">Dont have an account?</string>
+    <string name="already_have_anccount_text">Already have an account?</string>
+    <string name="review_text">See All Reviews</string>
+    <string name="recently_upload_text">Recently Uploaded</string>
+    <string name="see_all_text">See All</string>
+    <string name="thriller_text">Thriller</string>
+    <string name="romance_text">Romance</string>
+    <string name="fashion_text">Fashion</string>
+    <string name="profile_text">Profile</string>
+    <string name="home_text">Home</string>
+</resources>

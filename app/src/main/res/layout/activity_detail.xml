@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="2"
+    tools:context=".Activities.DetailActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#434343"
+        android:minHeight="?attr/actionBarSize"
+        app:contentInsetEnd="0dp"
+        app:contentInsetLeft="0dp"
+        app:contentInsetRight="0dp"
+        app:contentInsetStart="0dp"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <ImageView
+            android:id="@+id/backButton_ID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/back_arrow_36" />
+
+
+        <TextView
+            android:id="@+id/logo_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/Your_manga_text"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+
+
+    </androidx.appcompat.widget.Toolbar>
+ <FrameLayout
+     android:layout_width="match_parent"
+     android:layout_height="match_parent">
+
+     <LinearLayout
+         android:id="@+id/image_linear_layout"
+         android:layout_width="match_parent"
+         android:orientation="vertical"
+         android:layout_height="match_parent">
+         <ImageView
+             android:id="@+id/image_view_ID"
+             android:layout_width="match_parent"
+             android:scaleType="fitXY"
+             android:layout_height="match_parent">
+
+         </ImageView>
+     </LinearLayout>
+
+
+     <LinearLayout
+         android:id="@+id/card_linear_layout"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:background="@drawable/card_view"
+         android:layout_marginTop="250dp"
+         android:orientation="vertical">
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="0dp"
+             android:layout_weight=".5"
+             android:gravity="end"
+             android:paddingTop="10dp"
+             android:paddingRight="10dp"
+             android:orientation="vertical">
+
+             <LinearLayout
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:orientation="horizontal">
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="@string/review_text"
+                     android:textStyle="bold"
+                     android:textSize="18sp"
+                     android:textColor="@color/black"
+                     >
+
+                 </TextView>
+                 <ImageView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:src="@drawable/likes"/>
+
+             </LinearLayout>
+             <TextView
+                 android:layout_width="150dp"
+                 android:layout_height="2dp"
+                 android:background="@color/black"
+                 >
+
+             </TextView>
+
+         </LinearLayout>
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="0dp"
+             android:layout_weight="1">
+             <ImageView
+                 android:id="@+id/profile_img_ID"
+                 android:layout_width="0dp"
+                 android:layout_height="match_parent"
+                 android:layout_marginLeft="10dp"
+                 android:src="@drawable/login_image"
+                 android:layout_weight="1">
+
+             </ImageView>
+             <LinearLayout
+                 android:layout_width="0dp"
+                 android:layout_height="match_parent"
+                 android:layout_weight="1.6"
+                 android:orientation="vertical"
+                 android:layout_marginLeft="10dp"
+                 >
+                 <TextView
+                     android:id="@+id/title_text_ID"
+                     android:layout_width="match_parent"
+                     android:layout_height="0dp"
+                     android:textColor="@color/black"
+                     android:textSize="25sp"
+                     android:textStyle="bold"
+                     android:text="Andria Patakha"
+                     android:layout_weight="1">
+
+                 </TextView>
+                 <TextView
+                     android:layout_width="match_parent"
+                     android:layout_height="0dp"
+                     android:layout_weight="1.5">
+
+                 </TextView>
+                 <TextView
+                     android:id="@+id/subTitle"
+                     android:layout_width="match_parent"
+                     android:layout_height="0dp"
+                     android:textSize="25sp"
+                     android:layout_marginBottom="5dp"
+                     android:text="The King"
+                     android:textColor="@android:color/darker_gray"
+                     android:layout_weight="1">
+
+                 </TextView>
+             </LinearLayout>
+
+         </LinearLayout>
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="0dp"
+             android:layout_weight=".3">
+
+         </LinearLayout>
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="0dp"
+             android:layout_weight="1.5"
+             >
+         <TextView
+             android:id="@+id/description_id"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:textColor="@color/black"
+             android:gravity="center"
+             android:textSize="20sp"
+             android:layout_marginLeft="10dp"
+             android:layout_marginRight="10dp"
+             android:layout_marginBottom="5dp"
+             android:text="Hello king how R you at the moment"
+             android:textStyle="bold">
+
+         </TextView>
+         </LinearLayout>
+
+
+
+     </LinearLayout>
+
+ </FrameLayout>
+
+</LinearLayout>

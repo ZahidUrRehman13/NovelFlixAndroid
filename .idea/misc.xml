@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/projects/Novelflex/app/src/main/res/drawable-v24/bottom_nav_colors.xml" value="0.152" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/drawable-v24/bottom_sheet_background_curved.xml" value="0.152" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/drawable/btn_custom.xml" value="0.1435" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/drawable/card_view.xml" value="0.152" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/drawable/circle.xml" value="0.1435" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/drawable/cursor_color.xml" value="0.1435" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/drawable/et_custom.xml" value="0.1435" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/drawable/gradient.xml" value="0.1435" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/drawable/ic_arrow_left.xml" value="0.1435" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/drawable/ic_arrow_right.xml" value="0.1435" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1245" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/drawable/rounded_button.xml" value="0.1435" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/drawable/rounded_text.xml" value="0.1435" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/drawable/user.xml" value="0.1435" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/layout/activity_detail.xml" value="0.20416666666666666" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/layout/activity_grid.xml" value="0.13072916666666667" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/layout/activity_gridview.xml" value="0.20416666666666666" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/layout/activity_login.xml" value="0.21" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/layout/activity_main.xml" value="0.17074275362318841" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/layout/activity_sign_up.xml" value="0.22" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/layout/activity_splash.xml" value="0.17074275362318841" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/layout/activity_tab.xml" value="0.20416666666666666" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/layout/fragment_gridView.xml" value="0.13072916666666667" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/layout/fragment_gridview.xml" value="0.13072916666666667" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/layout/fragment_login.xml" value="0.17074275362318841" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/layout/fragment_profile.xml" value="0.20416666666666666" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/layout/grid_item_layout.xml" value="0.13072916666666667" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/layout/grid_view_item.xml" value="0.13072916666666667" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/layout/gridview__item_layout.xml" value="0.13072916666666667" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/layout/thriller__item_layout.xml" value="0.20416666666666666" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/layout/thriller_layout.xml" value="0.203125" />
+        <entry key="..\:/projects/Novelflex/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20416666666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
