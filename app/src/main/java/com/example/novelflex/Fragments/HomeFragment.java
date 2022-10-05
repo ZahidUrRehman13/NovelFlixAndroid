@@ -24,7 +24,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.novelflex.Activities.GridActivity;
 import com.example.novelflex.Adapter.ThrillerAdapter;
-import com.example.novelflex.Constants.ApiUtils.ApiUtils;
+import com.example.novelflex.Constants.ApiUtils;
 import com.example.novelflex.Models.DataModelClass;
 import com.example.novelflex.R;
 

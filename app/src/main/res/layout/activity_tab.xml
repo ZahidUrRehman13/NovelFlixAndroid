@@ -10,63 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#434343"
-                android:minHeight="?attr/actionBarSize"
-                app:contentInsetEnd="0dp"
-                app:contentInsetLeft="0dp"
-                app:contentInsetRight="0dp"
-                app:contentInsetStart="0dp"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-                <ImageView
-                    android:id="@+id/settingButton_ID"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/hamburger_img" />
-
-
-                <TextView
-                    android:id="@+id/logo_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="@string/geners_text"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    android:layout_gravity="end"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:scaleType="fitXY"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/cat" />
-
-
-            </androidx.appcompat.widget.Toolbar>
-
-
-        </com.google.android.material.appbar.AppBarLayout>
 
 
         <FrameLayout
             android:id="@+id/flFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/appBarLayout2" />
+            android:layout_height="match_parent" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"

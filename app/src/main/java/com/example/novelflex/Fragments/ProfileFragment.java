@@ -22,12 +22,12 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        user_Name = view.findViewById(R.id.data_txt_view);
+//        user_Name = view.findViewById(R.id.data_txt_view);
 
 
 
 
-        user_Name.setText("Sorry No Data To Display!");
+//        user_Name.setText("Sorry No Data To Display!");
 
 
 

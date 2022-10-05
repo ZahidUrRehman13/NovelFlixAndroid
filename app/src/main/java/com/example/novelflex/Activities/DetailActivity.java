@@ -25,7 +25,7 @@ public class DetailActivity extends AppCompatActivity {
     String descriptions;
     String author;
 
-    ImageView Image_ID, Profile_IMG_ID, backButton_ID;;
+    ImageView Image_ID, Profile_IMG_ID, backButton_ID;
     TextView Title_ID;
     TextView Description_ID;
     TextView Author_ID;
