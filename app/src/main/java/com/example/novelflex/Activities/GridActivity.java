@@ -66,7 +66,7 @@ public class GridActivity extends AppCompatActivity {
         //making the progressbar visible
         progressBar.setVisibility(View.VISIBLE);
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, ApiUtils.BASE_URL, null, new Response.Listener<JSONArray>() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, ApiUtils.BASE_URL1, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 progressBar.setVisibility(View.GONE);

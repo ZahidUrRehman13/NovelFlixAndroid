@@ -24,7 +24,7 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
             <ImageView
-                android:id="@+id/settingButton_ID"
+                android:id="@+id/ic_drawer"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="10dp"
@@ -42,13 +42,15 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <!--                <ImageView-->
-            <!--                    android:layout_gravity="end"-->
-            <!--                    android:layout_width="30dp"-->
-            <!--                    android:layout_height="30dp"-->
-            <!--                    android:scaleType="fitXY"-->
-            <!--                    android:layout_marginRight="10dp"-->
-            <!--                    android:src="@drawable/cat" />-->
+            <ImageView
+                android:id="@+id/add_home_btn_id"
+                android:layout_gravity="end"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:scaleType="fitXY"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/add"
+                />
 
 
         </androidx.appcompat.widget.Toolbar>

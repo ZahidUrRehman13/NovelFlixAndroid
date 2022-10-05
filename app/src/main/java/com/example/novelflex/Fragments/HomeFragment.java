@@ -1,17 +1,26 @@
 package com.example.novelflex.Fragments;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,6 +32,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.novelflex.Activities.GridActivity;
+import com.example.novelflex.Activities.UploadMangaActivity;
 import com.example.novelflex.Adapter.ThrillerAdapter;
 import com.example.novelflex.Constants.ApiUtils;
 import com.example.novelflex.Models.DataModelClass;
@@ -45,6 +55,8 @@ public class HomeFragment extends Fragment {
 
     private ProgressBar progressBar;
 
+    private ImageView BackButton_ID;
+
     private TextView seeAll_R_ID, seeAll_T_ID,seeAll_RO_ID,seeAll_F_ID;
 
     public final static String ACTION_FOR_IMAGE = "action_doctor_profile_id";
@@ -53,9 +65,12 @@ public class HomeFragment extends Fragment {
     public final static String ACTION_FOR_AUTHOR = "action_author_profile";
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        setHasOptionsMenu(true);
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         /// thriller RecyclerView
@@ -76,6 +91,11 @@ public class HomeFragment extends Fragment {
         seeAll_RO_ID = view.findViewById(R.id.see_all_R);
 
         seeAll_F_ID = view.findViewById(R.id.see_all_F);
+
+        BackButton_ID = view.findViewById(R.id.add_home_btn_id);
+
+
+
 
         thrillerModelArrayList = new ArrayList<>();
 
@@ -127,6 +147,18 @@ public class HomeFragment extends Fragment {
 
         });
 
+        BackButton_ID.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), UploadMangaActivity.class);
+                startActivity(intent);
+                ((Activity) getActivity()).overridePendingTransition(0, 0);
+            }
+
+
+        });
+
 
         return view;
     }
@@ -137,7 +169,7 @@ public class HomeFragment extends Fragment {
         //making the progressbar visible
         progressBar.setVisibility(View.VISIBLE);
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, ApiUtils.BASE_URL, null, new Response.Listener<JSONArray>() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, ApiUtils.BASE_URL1, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 progressBar.setVisibility(View.GONE);
@@ -207,5 +239,45 @@ public class HomeFragment extends Fragment {
 
         //adding the array request to request queue
         requestQueue.add(jsonArrayRequest);
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.navigation_view_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.nav_home:
+
+                // Do Activity menu item stuff here
+                return true;
+            case R.id.rate_us:
+
+                // Do Activity menu item stuff here
+                return true;
+            case R.id.disclimer_nav:
+
+                // Do Activity menu item stuff here
+                return true;
+
+            case R.id.nav_logout:
+
+                // Not implemented here
+                return true;
+            default:
+                break;
+        }
+
+        return false;
     }
 }

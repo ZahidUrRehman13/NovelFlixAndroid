@@ -7,17 +7,34 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.novelflex.Constants.ApiUtils;
 import com.example.novelflex.Constants.InternetConnection;
+import com.example.novelflex.LocalCache.SharedPrefManager;
 import com.example.novelflex.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -26,6 +43,7 @@ public class SignUpActivity extends AppCompatActivity {
     private LinearLayout linearLayoutSignUpTxt_ID;
     private EditText email_ID,firstName_ID,LastName_ID,password_ID,confirm_password_ID;
     private ImageView settingButton_ID;
+    ProgressBar loadingPB;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -42,6 +60,7 @@ public class SignUpActivity extends AppCompatActivity {
         password_ID = (EditText) findViewById(R.id.password_id);
         confirm_password_ID = (EditText) findViewById(R.id.confirm_password_id);
         settingButton_ID=(ImageView)findViewById(R.id.settingButton_SignUpID);
+        loadingPB = findViewById(R.id.progress_signUp);
 
         // Navigate to Tab Activity screen
         SignUpActivityButton_ID.setOnClickListener((View.OnClickListener) (new View.OnClickListener() {
@@ -56,9 +75,9 @@ public class SignUpActivity extends AppCompatActivity {
 
                                  if (InternetConnection.checkConnection(SignUpActivity.this)) {
 
-//                                     LoginResponseApi(UserName_Txt_ID.getText().toString().trim(), Password_Txt_ID.getText().toString().trim());
-                                       tabScreen();
-                                     Toast.makeText(SignUpActivity.this, getResources().getString(R.string.register_success), Toast.LENGTH_SHORT).show();
+                                     Register(firstName_ID.getText().toString().trim(),LastName_ID.getText().toString().trim(),
+                                              email_ID.getText().toString().trim(),password_ID.getText().toString().trim(),
+                                              confirm_password_ID.getText().toString().trim());
 
                                  } else {
                                      new AlertDialog.Builder(SignUpActivity.this)
@@ -148,4 +167,68 @@ public class SignUpActivity extends AppCompatActivity {
                 + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
                 + "([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$").matcher(email).matches();
     }
+
+    // SignUp Api response
+    private void Register(String fname,String lname,String email, String password,String confirm_password)
+    {
+        loadingPB.setVisibility(View.VISIBLE);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, ApiUtils.SIGNUP_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        Log.e("response",response);
+                        try{
+                            JSONObject jsonObject = new JSONObject(response);
+                            String success = jsonObject.getString("status");
+
+                            if(success.equals("200")){
+                                JSONObject data = jsonObject.getJSONObject("data");
+                                Toast.makeText(SignUpActivity.this, getResources().getString(R.string.register_success), Toast.LENGTH_SHORT).show();
+                                loadingPB.setVisibility(View.GONE);
+
+                                SharedPrefManager.setUserID(getApplicationContext(), "accessToken", data.getString("accessToken"));
+                                SharedPrefManager.setUserName(getApplicationContext(), "fname", data.getString("fname"));
+                                SharedPrefManager.setUserEmail(getApplicationContext(), "email", data.getString("email"));
+
+                                Intent login = new Intent(SignUpActivity.this,TabActivity.class);
+                                startActivity(login);
+                                finish();
+                            }else{
+                                loadingPB.setVisibility(View.GONE);
+                                Toast.makeText(getApplicationContext(),"Email Already Exist",Toast.LENGTH_LONG).show();
+
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Toast.makeText(getApplicationContext(),"Registration Error! try again"+e,Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                loadingPB.setVisibility(View.GONE);
+                Toast.makeText(getApplicationContext(),"Registration Error try again",Toast.LENGTH_LONG).show();
+
+
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String,String> params = new HashMap<>();
+                params.put("fname", fname);
+                params.put("lname", lname);
+                params.put("email", email);
+                params.put("password", password);
+                params.put("confirmd_password", confirm_password);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
 }

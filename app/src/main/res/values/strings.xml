@@ -9,6 +9,8 @@
     <string name="Email">Email Address</string>
     <string name="PasswordHintTxt">******</string>
     <string name="UsernameHintTxt">First Name</string>
+    <string name="bookTitle">Book Title</string>
+    <string name="file_select">Select File</string>
     <string name="confirm_password_text">Confirm Password</string>
     <string name="password_id">Password</string>
     <string name="user_email_text">Email/Phone</string>
@@ -16,9 +18,17 @@
     <string name="EmailHintTxt">novelflex@gmail.com</string>
     <string name="Password">Password</string>
     <string name="login_btn">Get Started</string>
+    <string name="upload">Upload</string>
     <string name="signUp_btn">SignUp</string>
     <string name="geners_text">Sign Up Here</string>
+    <string name="history_text">Your Upload History</string>
+    <string name="uploadManga">Upload Your Manga</string>
     <string name="geners">Geners</string>
+    <string name="arabic">Arabic</string>
+    <string name="english">English</string>
+    <string name="thumbnail">Upload Book Cover Image</string>
+    <string name="des_text">Write The Description</string>
+    <string name="select_language">Select Language</string>
     <string name="forgetPasswor_text_text">FORGET PASSWORD</string>
     <string name="send_text">SEND</string>
     <string name="Your_manga_text">Your Manga</string>
@@ -40,4 +50,11 @@
     <string name="enterCorrect_email">Please Enter Correct Email</string>
     <string name="email_send_text_success">Verification email is send to you account Successfully</string>
     <string name="register_success">Register Successfully</string>
+    <string name="home_nav">Home</string>
+    <string name="contact_nav">Contact Us</string>
+    <string name="rate_nav">Rate Us</string>
+    <string name="disclimer_nav">disclaimer</string>
+    <string name="logout_nav">Log Out</string>
+
+
 </resources>

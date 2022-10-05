@@ -21,6 +21,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.novelflex.Constants.ApiUtils;
 import com.example.novelflex.Constants.InternetConnection;
@@ -69,9 +70,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         if (InternetConnection.checkConnection(LoginActivity.this)) {
 
-//                            LoginResponseApi(UserName_Txt_ID.getText().toString().trim(), Password_Txt_ID.getText().toString().trim());
-                              tabScreen();
-                            Toast.makeText(LoginActivity.this, getResources().getString(R.string.login_success), Toast.LENGTH_SHORT).show();
+                            Register(UserName_Txt_ID.getText().toString().trim(), Password_Txt_ID.getText().toString().trim());
 
                         } else {
                             new AlertDialog.Builder(LoginActivity.this)
@@ -162,72 +161,66 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     // Login Api response
-    private void LoginResponseApi(String email, String password) {
-        // url to post our data
-//        String url = "https://api-yas.broomstickcreative.com/api/auth/local";
+
+
+    private void Register(String email, String password)
+    {
         loadingPB.setVisibility(View.VISIBLE);
 
-        Map<String, String> params = new HashMap<String, String>();
-//        params.put("identifier", "as@msn.com");
-//        params.put("password", "manager");
-        params.put("identifier", email);
-        params.put("password", password);
-        JSONObject objRegData = new JSONObject(params);
-
-        RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
-
-        JsonObjectRequest jsObjRequest = new JsonObjectRequest
-                (Request.Method.POST, ApiUtils.BASE_URL, objRegData, new Response.Listener<JSONObject>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "https://dats.digitecglobal.com/novel/auth/login",
+                new Response.Listener<String>() {
                     @Override
-                    public void onResponse(JSONObject response) {
-//                        Log.d("API_RESPONSE_IS", response.toString());
-                        loadingPB.setVisibility(View.GONE);
+                    public void onResponse(String response) {
 
-                        Toast.makeText(LoginActivity.this, getResources().getString(R.string.login), Toast.LENGTH_SHORT).show();
-                        try {
+                        Log.e("response",response);
+                        try{
+                            JSONObject jsonObject = new JSONObject(response);
+                            String success = jsonObject.getString("status");
+//
+                            if(success.equals("200")){
 
-                            JSONObject userDetail = response.getJSONObject("user");
-                            Log.d("API_RESPONSE_IS", userDetail.toString());
+                                JSONObject data = jsonObject.getJSONObject("data");
 
-                            SharedPrefManager.setUserID(getApplicationContext(), "id", userDetail.getString("id"));
-                            SharedPrefManager.setUserName(getApplicationContext(), "username", userDetail.getString("username"));
-                            SharedPrefManager.setUserEmail(getApplicationContext(), "email", userDetail.getString("email"));
-                            SharedPrefManager.setUserPhone(getApplicationContext(), "phone_number", userDetail.getString("Phone_number"));
+                                SharedPrefManager.setUserID(getApplicationContext(), "accessToken", data.getString("accessToken"));
+                                SharedPrefManager.setUserName(getApplicationContext(), "fname", data.getString("fname"));
+                                SharedPrefManager.setUserEmail(getApplicationContext(), "email", data.getString("email"));
 
+                                Toast.makeText(LoginActivity.this, getResources().getString(R.string.login_success), Toast.LENGTH_SHORT).show();
+                                loadingPB.setVisibility(View.GONE);
+                                Intent login = new Intent(LoginActivity.this,TabActivity.class);
+                                startActivity(login);
+                                finish();
+                            }else{
+                                loadingPB.setVisibility(View.GONE);
+                                Toast.makeText(getApplicationContext(),"Invalid Email or Password",Toast.LENGTH_LONG).show();
 
-                            Log.d("Saved email", SharedPrefManager.getUserEmail(getApplicationContext(), "email"));
-
-
-                            Intent intent = new Intent(LoginActivity.this, TabActivity.class);
-                            startActivity(intent);
-                            finish();
-
-                        } catch (JSONException e) {
+                            }
+                        } catch (Exception e) {
                             e.printStackTrace();
+                            Toast.makeText(getApplicationContext(),"Login Error! try again"+e,Toast.LENGTH_LONG).show();
                         }
-
-
                     }
                 }, new Response.ErrorListener() {
-
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        loadingPB.setVisibility(View.GONE);
-//                if (error.networkResponse.statusCode == 400) {
-                        Toast.makeText(LoginActivity.this, getResources().getString(R.string.invalid_email_or_password_login), Toast.LENGTH_SHORT).show();
-//                }
-                    }
-                }) {
             @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("Content-Type", "application/json");
+            public void onErrorResponse(VolleyError error) {
+
+                loadingPB.setVisibility(View.GONE);
+                Toast.makeText(getApplicationContext(),"Login Error try again",Toast.LENGTH_LONG).show();
+
+
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String,String> params = new HashMap<>();
+                params.put("email",email);
+                params.put("password",password);
                 return params;
             }
         };
-
-        queue.add(jsObjRequest);
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
 
 }
