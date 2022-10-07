@@ -173,7 +173,7 @@ public class SignUpActivity extends AppCompatActivity {
     {
         loadingPB.setVisibility(View.VISIBLE);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, ApiUtils.SIGNUP_URL,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, ApiUtils.REGISTER_API,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
